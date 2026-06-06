@@ -1,0 +1,33 @@
+.home-page {
+  --header-pink: #ed3378;
+  --header-cream: #fffdf0;
+  --cake-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath fill='%23ed3378' d='M14.8 2.5h2.4v5.2h-2.4z'/%3E%3Cpath fill='%23ff8fbd' d='M12.4 7.8c0-2 1.6-3.6 3.6-3.6s3.6 1.6 3.6 3.6H12.4Z'/%3E%3Cpath fill='%23ed3378' d='M7 13.2c0-2.5 2-4.5 4.5-4.5h9c2.5 0 4.5 2 4.5 4.5v2.3H7v-2.3Z'/%3E%3Cpath fill='%23fff7ee' d='M7 15.2h18v4.1c-.7.8-1.5 1.2-2.6 1.2-1.5 0-2.2-.9-3.3-.9-1.2 0-1.9.9-3.1.9s-1.9-.9-3.1-.9c-1.1 0-1.8.9-3.3.9-1 0-1.9-.4-2.6-1.2v-4.1Z'/%3E%3Cpath fill='%23ed3378' d='M6.2 19h19.6v7.2c0 1.8-1.4 3.2-3.2 3.2H9.4c-1.8 0-3.2-1.4-3.2-3.2V19Z'/%3E%3Cpath fill='%23ffb6d2' d='M9.2 22.3h2.7v2.7H9.2zm5.4 1.1h2.7v2.7h-2.7zm5.5-1.1h2.7v2.7h-2.7z'/%3E%3C/svg%3E") 15 5, auto;
+  min-height: 100svh;
+  background: var(--header-cream);
+  color: #111;
+  cursor: var(--cake-cursor);
+}
+
+.home-page * {
+  cursor: var(--cake-cursor);
+}
+
+html,
+body {
+  background: #fffdf0;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  max-width: none;
+  min-height: 100svh;
+  margin: 0;
+  border: 0;
+  background: #fffdf0;
+  text-align: left;
+}
