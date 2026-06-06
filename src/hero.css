@@ -13,6 +13,7 @@
     #fffdf0;
   color: #151515;
   font-family: "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;
+  animation: hero-refresh-in 760ms ease backwards;
 }
 
 .hero-content {
@@ -46,6 +47,7 @@
     background 180ms ease,
     box-shadow 180ms ease,
     transform 180ms ease;
+  animation: hero-drop-in 620ms 90ms cubic-bezier(0.17, 0.84, 0.44, 1.2) backwards;
 }
 
 .hero-kicker:hover {
@@ -56,41 +58,78 @@
 
 .hero-title-wrap {
   position: relative;
-  z-index: 2;
+  z-index: 8;
   grid-column: 1 / -1;
+  width: 100%;
+  padding-left: clamp(12px, 2.7vw, 35px);
+  box-sizing: border-box;
+  overflow: visible;
 }
 
 .hero-title {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: clamp(16px, 3.2vw, 45px);
+  justify-content: flex-start;
+  width: 100%;
+  gap: 30px;
   margin: 0;
   color: #ed3378;
-  font-size: clamp(76px, 13.8vw, 190px);
+  font-family: "Cooper Black", "Arial Rounded MT Bold", "Arial Black", "Trebuchet MS", sans-serif;
+  font-size: 148px;
   font-weight: 900;
   letter-spacing: 0;
-  line-height: 0.8;
+  line-height: 0.78;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.hero-title span:nth-child(2n + 1) {
-  color: #c80854;
+.hero-word {
+  display: inline-flex;
+  gap: 0;
+  align-items: flex-end;
 }
 
-.hero-title span {
+.hero-letter {
   display: inline-block;
-  transform-origin: 50% 100%;
+  color: #ed3378;
+  text-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.2),
+    0 9px 0 rgba(237, 51, 120, 0.05);
+  transform: rotate(var(--letter-tilt, 0deg)) translateY(var(--letter-lift, 0));
+  transform-origin: 50% 86%;
   transition:
     color 180ms ease,
     transform 240ms ease,
     text-shadow 240ms ease;
+  animation: hero-title-pop 720ms 170ms cubic-bezier(0.17, 0.84, 0.44, 1.2) backwards;
 }
 
-.hero-title span:hover {
+.hero-word:nth-child(1) .hero-letter:nth-child(1),
+.hero-word:nth-child(1) .hero-letter:nth-child(4),
+.hero-word:nth-child(2) .hero-letter:nth-child(1),
+.hero-word:nth-child(2) .hero-letter:nth-child(4) {
+  color: #c80854;
+}
+
+.hero-word:nth-child(1) .hero-letter:nth-child(1) { --letter-tilt: -2deg; --letter-lift: 1px; }
+.hero-word:nth-child(1) .hero-letter:nth-child(2) { --letter-tilt: 2deg; --letter-lift: -2px; }
+.hero-word:nth-child(1) .hero-letter:nth-child(3) { --letter-tilt: -1deg; --letter-lift: 2px; }
+.hero-word:nth-child(1) .hero-letter:nth-child(4) { --letter-tilt: 1deg; --letter-lift: -1px; }
+.hero-word:nth-child(1) .hero-letter:nth-child(5) { --letter-tilt: -2deg; --letter-lift: 1px; }
+.hero-word:nth-child(2) .hero-letter:nth-child(1) { --letter-tilt: 1deg; --letter-lift: -1px; }
+.hero-word:nth-child(2) .hero-letter:nth-child(2) { --letter-tilt: -1deg; --letter-lift: 2px; }
+.hero-word:nth-child(2) .hero-letter:nth-child(3) { --letter-tilt: 2deg; --letter-lift: -1px; }
+.hero-word:nth-child(2) .hero-letter:nth-child(4) { --letter-tilt: -2deg; --letter-lift: 1px; }
+.hero-word:nth-child(2) .hero-letter:nth-child(5) { --letter-tilt: 1deg; --letter-lift: -2px; }
+
+.hero-word:nth-child(2) .hero-letter {
+  animation-delay: 260ms;
+}
+
+.hero-letter:hover {
   color: #ff4388;
   text-shadow: 0 12px 0 rgba(237, 51, 120, 0.12);
-  transform: rotate(-2deg) translateY(-8px) scale(1.03);
+  transform: rotate(calc(var(--letter-tilt, 0deg) - 2deg)) translateY(-8px) scale(1.03);
 }
 
 .hero-sticker {
@@ -139,6 +178,7 @@
   padding: 34px 0 0 clamp(12px, 2.7vw, 35px);
   grid-column: 1;
   grid-row: 3;
+  animation: hero-copy-in 680ms 310ms ease backwards;
 }
 
 .hero-lead {
@@ -282,22 +322,23 @@
 
 .hero-art {
   position: relative;
-  z-index: 2;
-  min-height: 395px;
+  z-index: 1;
+  min-height: 430px;
   grid-column: 2;
   grid-row: 3;
 }
 
 .hero-cake {
   position: absolute;
-  right: clamp(-190px, -10vw, -70px);
-  bottom: -74px;
-  width: clamp(430px, 55vw, 725px);
+  right: clamp(-130px, -7vw, -46px);
+  bottom: -54px;
+  width: clamp(500px, 52vw, 720px);
   aspect-ratio: 1;
   border-radius: 50%;
   transition:
     filter 180ms ease,
     transform 220ms ease;
+  animation: hero-cake-in 820ms 360ms cubic-bezier(0.17, 0.84, 0.44, 1.08) backwards;
 }
 
 .hero-cake:hover {
@@ -315,8 +356,8 @@
   border: 7px solid rgba(120, 116, 104, 0.32);
   border-radius: 50%;
   background:
-    radial-gradient(circle at 46% 44%, rgba(255, 255, 255, 0.86) 0 54%, rgba(228, 221, 210, 0.65) 55% 61%, rgba(255, 255, 255, 0.78) 62% 68%, transparent 69%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+    radial-gradient(circle at 42% 42%, rgba(255, 255, 255, 0.84) 0 54%, rgba(226, 218, 206, 0.74) 55% 61%, rgba(255, 255, 255, 0.78) 62% 68%, transparent 69%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0));
   box-shadow:
     inset 0 0 20px rgba(255, 255, 255, 0.78),
     0 0 0 3px rgba(255, 255, 255, 0.42),
@@ -352,10 +393,10 @@
   box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
-.berry {
+.cake-berry {
   position: absolute;
   z-index: 2;
-  width: 9.6%;
+  width: 9.4%;
   aspect-ratio: 1;
   border-radius: 55% 48% 56% 44%;
   background:
@@ -366,7 +407,7 @@
   transform: rotate(var(--berry-tilt, 0deg));
 }
 
-.berry::after {
+.cake-berry::after {
   content: "";
   position: absolute;
   top: 16%;
@@ -380,32 +421,32 @@
     5px 21px 0 rgba(255, 210, 216, 0.45);
 }
 
-.berry-1 { top: 25%; left: 43%; --berry-tilt: -8deg; }
-.berry-2 { top: 30%; left: 55%; --berry-tilt: 12deg; }
-.berry-3 { top: 39%; left: 64%; --berry-tilt: -18deg; }
-.berry-4 { top: 52%; left: 65%; --berry-tilt: 20deg; }
-.berry-5 { top: 63%; left: 57%; --berry-tilt: -5deg; }
-.berry-6 { top: 66%; left: 43%; --berry-tilt: 17deg; }
-.berry-7 { top: 58%; left: 31%; --berry-tilt: -13deg; }
-.berry-8 { top: 45%; left: 27%; --berry-tilt: 11deg; }
-.berry-9 { top: 33%; left: 32%; --berry-tilt: -6deg; }
-.berry-10 { top: 37%; left: 45%; --berry-tilt: 22deg; }
-.berry-11 { top: 48%; left: 49%; --berry-tilt: -16deg; }
-.berry-12 { top: 49%; left: 39%; --berry-tilt: 10deg; }
-.berry-13 { top: 57%; left: 47%; --berry-tilt: -22deg; }
-.berry-14 { top: 42%; left: 57%; --berry-tilt: 7deg; }
-.berry-15 { top: 28%; left: 67%; --berry-tilt: -8deg; }
-.berry-16 { top: 69%; left: 69%; --berry-tilt: 15deg; }
-.berry-17 { top: 74%; left: 54%; --berry-tilt: -15deg; }
-.berry-18 { top: 73%; left: 35%; --berry-tilt: 12deg; }
-.berry-19 { top: 62%; left: 21%; --berry-tilt: -18deg; }
-.berry-20 { top: 44%; left: 18%; --berry-tilt: 9deg; }
-.berry-21 { top: 26%; left: 22%; --berry-tilt: -9deg; }
-.berry-22 { top: 19%; left: 35%; --berry-tilt: 16deg; }
-.berry-23 { top: 18%; left: 55%; --berry-tilt: -16deg; }
-.berry-24 { top: 23%; left: 74%; --berry-tilt: 13deg; }
-.berry-25 { top: 49%; left: 77%; --berry-tilt: -18deg; }
-.berry-26 { top: 70%; left: 76%; --berry-tilt: 8deg; }
+.cake-berry-1 { top: 25%; left: 43%; --berry-tilt: -8deg; }
+.cake-berry-2 { top: 30%; left: 55%; --berry-tilt: 12deg; }
+.cake-berry-3 { top: 39%; left: 64%; --berry-tilt: -18deg; }
+.cake-berry-4 { top: 52%; left: 65%; --berry-tilt: 20deg; }
+.cake-berry-5 { top: 63%; left: 57%; --berry-tilt: -5deg; }
+.cake-berry-6 { top: 66%; left: 43%; --berry-tilt: 17deg; }
+.cake-berry-7 { top: 58%; left: 31%; --berry-tilt: -13deg; }
+.cake-berry-8 { top: 45%; left: 27%; --berry-tilt: 11deg; }
+.cake-berry-9 { top: 33%; left: 32%; --berry-tilt: -6deg; }
+.cake-berry-10 { top: 37%; left: 45%; --berry-tilt: 22deg; }
+.cake-berry-11 { top: 48%; left: 49%; --berry-tilt: -16deg; }
+.cake-berry-12 { top: 49%; left: 39%; --berry-tilt: 10deg; }
+.cake-berry-13 { top: 57%; left: 47%; --berry-tilt: -22deg; }
+.cake-berry-14 { top: 42%; left: 57%; --berry-tilt: 7deg; }
+.cake-berry-15 { top: 28%; left: 67%; --berry-tilt: -8deg; }
+.cake-berry-16 { top: 69%; left: 69%; --berry-tilt: 15deg; }
+.cake-berry-17 { top: 74%; left: 54%; --berry-tilt: -15deg; }
+.cake-berry-18 { top: 73%; left: 35%; --berry-tilt: 12deg; }
+.cake-berry-19 { top: 62%; left: 21%; --berry-tilt: -18deg; }
+.cake-berry-20 { top: 44%; left: 18%; --berry-tilt: 9deg; }
+.cake-berry-21 { top: 26%; left: 22%; --berry-tilt: -9deg; }
+.cake-berry-22 { top: 19%; left: 35%; --berry-tilt: 16deg; }
+.cake-berry-23 { top: 18%; left: 55%; --berry-tilt: -16deg; }
+.cake-berry-24 { top: 23%; left: 74%; --berry-tilt: 13deg; }
+.cake-berry-25 { top: 49%; left: 77%; --berry-tilt: -18deg; }
+.cake-berry-26 { top: 70%; left: 76%; --berry-tilt: 8deg; }
 
 .loose-berries {
   position: absolute;
@@ -414,7 +455,8 @@
   left: -18%;
   width: 210px;
   height: 112px;
-  pointer-events: none;
+  pointer-events: auto;
+  animation: loose-berries-in 720ms 560ms ease backwards;
 }
 
 .loose-berries span {
@@ -426,24 +468,52 @@
     radial-gradient(circle at 33% 23%, rgba(255, 255, 255, 0.8) 0 7%, transparent 8%),
     radial-gradient(circle, #ff3048 0 55%, #b6082e 92%);
   box-shadow: inset -8px -9px 12px rgba(112, 0, 24, 0.28);
+  pointer-events: auto;
+  transform: rotate(var(--loose-berry-rotate, 0deg));
+  transform-origin: 50% 85%;
+  transition:
+    filter 180ms ease,
+    transform 220ms ease;
+}
+
+.loose-berries span:hover {
+  filter: drop-shadow(0 13px 0 rgba(237, 51, 120, 0.16));
+  transform: translateY(-18px) rotate(calc(var(--loose-berry-rotate, 0deg) + 26deg)) scale(1.14);
+  animation: loose-berry-jelly 560ms ease;
 }
 
 .loose-berries span:nth-child(1) {
   left: 8px;
   bottom: 0;
-  transform: rotate(-19deg);
+  --loose-berry-rotate: -19deg;
 }
 
 .loose-berries span:nth-child(2) {
   left: 73px;
   bottom: 20px;
-  transform: rotate(18deg);
+  --loose-berry-rotate: 18deg;
 }
 
 .loose-berries span:nth-child(3) {
   left: 119px;
   bottom: 61px;
-  transform: rotate(-11deg);
+  --loose-berry-rotate: -11deg;
+}
+
+.real-berries-hotspot {
+  position: absolute;
+  z-index: 2;
+  left: 4%;
+  bottom: 3%;
+  width: 34%;
+  height: 30%;
+  border-radius: 50%;
+  pointer-events: auto;
+}
+
+.real-berries-hotspot:hover ~ .cake-plate {
+  animation: real-berries-pop 560ms ease;
+  transform-origin: 32% 72%;
 }
 
 .toy-field {
@@ -684,6 +754,118 @@
   }
 }
 
+@keyframes real-berries-pop {
+  0%,
+  100% {
+    transform: rotate(0) scale(1);
+  }
+
+  42% {
+    transform: rotate(-8deg) scale(1.08);
+  }
+
+  72% {
+    transform: rotate(5deg) scale(1.03);
+  }
+}
+
+@keyframes hero-refresh-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.88);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes hero-title-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(42px) scale(0.84) rotate(-2deg);
+  }
+
+  65% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.04) rotate(1deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+@keyframes hero-copy-in {
+  from {
+    opacity: 0;
+    transform: translateX(-34px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes hero-cake-in {
+  0% {
+    opacity: 0;
+    transform: translateX(90px) translateY(26px) rotate(14deg) scale(0.82);
+  }
+
+  68% {
+    opacity: 1;
+    transform: translateX(-8px) translateY(-6px) rotate(-2deg) scale(1.03);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0) rotate(0) scale(1);
+  }
+}
+
+@keyframes loose-berries-in {
+  from {
+    opacity: 0;
+    transform: translateY(46px) scale(0.76);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes loose-berry-jelly {
+  0%,
+  100% {
+    border-radius: 56% 44% 55% 45%;
+  }
+
+  38% {
+    border-radius: 45% 55% 44% 56%;
+  }
+
+  68% {
+    border-radius: 60% 40% 53% 47%;
+  }
+}
+
 @keyframes brands-marquee {
   from {
     transform: translateX(0);
@@ -767,6 +949,20 @@
   }
 }
 
+@media (min-width: 1180px) {
+  .hero-title {
+    gap: 34px;
+    font-size: 160px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .hero-title {
+    gap: 22px;
+    font-size: 122px;
+  }
+}
+
 @media (max-width: 980px) {
   .hero-section {
     min-height: auto;
@@ -780,9 +976,13 @@
   }
 
   .hero-title {
-    flex-wrap: wrap;
-    gap: 8px 26px;
-    font-size: clamp(68px, 18vw, 132px);
+    flex-wrap: nowrap;
+    gap: 18px;
+    font-size: 102px;
+  }
+
+  .hero-title-wrap {
+    padding-left: 0;
   }
 
   .hero-sticker-left {
@@ -808,7 +1008,7 @@
 
   .hero-cake {
     right: -118px;
-    bottom: -93px;
+    bottom: -106px;
     width: min(720px, 92vw);
   }
 
@@ -829,8 +1029,9 @@
   }
 
   .hero-title {
-    font-size: clamp(58px, 24vw, 96px);
-    line-height: 0.86;
+    gap: 12px;
+    font-size: 66px;
+    line-height: 0.9;
   }
 
   .hero-sticker {
@@ -913,17 +1114,45 @@
   }
 }
 
+@media (max-width: 520px) {
+  .hero-title {
+    gap: 10px;
+    font-size: 56px;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero-title {
+    gap: 8px;
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-title {
+    gap: 7px;
+    font-size: 39px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .brand-track,
   .toy-boy,
   .toy-body,
   .toy-arm,
   .toy-leg,
+  .hero-cake,
+  .hero-section,
+  .hero-kicker,
+  .hero-letter,
+  .hero-copy,
+  .loose-berries,
+  .loose-berries span,
   .hero-cake:hover .cake-plate {
     animation: none;
   }
 
-  .hero-title span,
+  .hero-letter,
   .hero-sticker,
   .hero-perk,
   .perk-icon,

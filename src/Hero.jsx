@@ -12,8 +12,8 @@ const brands = [
 ]
 
 const toys = ['toy-one', 'toy-two', 'toy-three', 'toy-four']
-
-const berries = Array.from({ length: 26 }, (_, index) => `berry-${index + 1}`)
+const cakeBerries = Array.from({ length: 26 }, (_, index) => `cake-berry-${index + 1}`)
+const titleWords = ['FRESH', 'FIRST']
 
 function Hero() {
   return (
@@ -36,8 +36,15 @@ function Hero() {
 
         <div className="hero-title-wrap">
           <h1 id="hero-title" className="hero-title">
-            <span>FRESH</span>
-            <span>FIRST</span>
+            {titleWords.map((word) => (
+              <span className="hero-word" key={word}>
+                {word.split('').map((letter, index) => (
+                  <span className="hero-letter" key={`${word}-${letter}-${index}`}>
+                    {letter}
+                  </span>
+                ))}
+              </span>
+            ))}
           </h1>
           <span className="hero-sticker hero-sticker-left">Pure Ingredients</span>
           <span className="hero-sticker hero-sticker-right">Oven Fresh</span>
@@ -107,12 +114,13 @@ function Hero() {
           </div>
 
           <div className="hero-cake" role="img" aria-label="Strawberry cake">
+            <span className="real-berries-hotspot" aria-hidden="true" />
             <div className="cake-plate">
               <div className="cake-crust" />
               <div className="cake-cream" />
               <div className="cake-glaze" />
-              {berries.map((berry) => (
-                <span key={berry} className={`berry ${berry}`} />
+              {cakeBerries.map((berry) => (
+                <span key={berry} className={`cake-berry ${berry}`} />
               ))}
             </div>
           </div>

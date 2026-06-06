@@ -11,6 +11,7 @@
   border-radius: 64px 42px 0 0;
   color: #111;
   font-family: "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;
+  animation: header-refresh-in 680ms ease backwards;
 }
 
 .site-header::before {
@@ -349,6 +350,18 @@
   }
 }
 
+@keyframes header-refresh-in {
+  from {
+    opacity: 0;
+    transform: translateY(-24px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes header-nav-hop {
   0% {
     transform: translateY(0) scale(1);
@@ -368,9 +381,11 @@
   .order-button,
   .header-search,
   .explore-menu-button,
+  .site-header,
   .header-nav a,
   .header-nav a::after {
     transition: none;
+    animation: none;
   }
 
   .header-icon-button:hover,
