@@ -323,16 +323,16 @@
 .hero-art {
   position: relative;
   z-index: 1;
-  min-height: 430px;
+  min-height: 452px;
   grid-column: 2;
   grid-row: 3;
 }
 
 .hero-cake {
   position: absolute;
-  right: clamp(-130px, -7vw, -46px);
-  bottom: -54px;
-  width: clamp(500px, 52vw, 720px);
+  right: clamp(-116px, -6vw, -36px);
+  bottom: -96px;
+  width: clamp(540px, 54vw, 760px);
   aspect-ratio: 1;
   border-radius: 50%;
   transition:
@@ -1001,15 +1001,15 @@
   }
 
   .hero-art {
-    min-height: 390px;
+    min-height: 420px;
     grid-column: 1;
     grid-row: 4;
   }
 
   .hero-cake {
-    right: -118px;
-    bottom: -106px;
-    width: min(720px, 92vw);
+    right: -112px;
+    bottom: -132px;
+    width: min(760px, 96vw);
   }
 
   .loose-berries {
@@ -1075,13 +1075,13 @@
   }
 
   .hero-art {
-    min-height: 300px;
+    min-height: 330px;
   }
 
   .hero-cake {
     right: -118px;
-    bottom: -70px;
-    width: min(520px, 116vw);
+    bottom: -96px;
+    width: min(560px, 122vw);
   }
 
   .loose-berries {
